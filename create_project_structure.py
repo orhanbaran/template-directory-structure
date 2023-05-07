@@ -1,6 +1,13 @@
 import os
 
+PROJECT_CREATED_FLAG = False
+
 def create_project():
+    global PROJECT_CREATED_FLAG
+
+    if PROJECT_CREATED_FLAG:
+        print("Project already created.")
+        return
     project_name = input("Enter the project name: ")
     project_dir = os.path.join(os.getcwd(), project_name)
 
@@ -81,6 +88,8 @@ def create_project():
     if not os.path.exists(setup_file):
         with open(setup_file, 'w') as f:
             f.write('# Setup script goes here.')
+
+    PROJECT_CREATED_FLAG = True
 
 
 if __name__ == '__main__':
